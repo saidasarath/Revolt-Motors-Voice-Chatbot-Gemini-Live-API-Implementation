@@ -1,43 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rev - Revolt Motors Voice Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-car"></i>
+                <h1>Revolt Motors</h1>
+            </div>
+            <div class="subtitle">
+                <span class="ai-name">Rev</span> - Your AI Voice Assistant
+            </div>
+        </header>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        <!-- Main Chat Interface -->
+        <main class="chat-container">
+            <!-- Welcome Message -->
+            <div class="welcome-message" id="welcomeMessage">
+                <div class="welcome-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <h2>Welcome to Revolt Motors!</h2>
+                <p>Ask me anything about our electric vehicles, services, or company information.</p>
+                <p>Click the microphone button below to start speaking.</p>
+            </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages" style="display: none;">
+                <!-- Messages will be dynamically added here -->
+            </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+            <!-- Status Indicator -->
+            <div class="status-indicator" id="statusIndicator">
+                <div class="status-dot"></div>
+                <span class="status-text">Ready to listen</span>
+            </div>
+        </main>
+
+        <!-- Voice Control Panel -->
+        <div class="voice-controls">
+            <!-- Record Button -->
+            <button class="record-btn" id="recordBtn" title="Click to start/stop recording">
+                <div class="record-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <div class="pulse-ring"></div>
+            </button>
+            
+            <!-- Recording Status -->
+            <div class="recording-status" id="recordingStatus">
+                <span class="recording-text">Click to start</span>
+            </div>
+        </div>
+
+        <!-- Theme and Language Selector -->
+        <div class="controls-container">
+            <!-- Theme Switcher -->
+           
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <label for="languageSelect">Language:</label>
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="mr">Marathi</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="bn">Bengali</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="kn">Kannada</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="pa">Punjabi</option>
+                </select>
+                <div class="language-info">
+                    <small>🔊 = Voice supported, 📝 = Text only</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ul>
+                <li><i class="fas fa-microphone"></i> Click the microphone to start recording</li>
+                <li><i class="fas fa-stop"></i> Click again to stop and send your message</li>
+                <li><i class="fas fa-volume-up"></i> Speak while AI is responding to interrupt</li>
+                <li><i class="fas fa-language"></i> Choose your preferred language</li>
+                <li><i class="fas fa-info-circle"></i> Voice playback works best in English. Other languages show text responses.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Processing your request...</p>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="error-modal" id="errorModal">
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Error</h3>
+            <p id="errorMessage">Something went wrong. Please try again.</p>
+            <button class="error-close-btn" onclick="closeErrorModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

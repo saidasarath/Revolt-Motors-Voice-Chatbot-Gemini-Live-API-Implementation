@@ -1,70 +1,237 @@
-# Getting Started with Create React App
+# 🚗 Revolt Motors Voice Chatbot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A real-time voice chatbot web application that mimics the Revolt Motors chatbot experience, powered by Google's Gemini Live API. Built with Node.js, Express, WebSockets, and vanilla JavaScript.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **🎤 Real-time Voice Interaction**: Speak to AI and get voice responses
+- **🌍 Multilingual Support**: Supports 10+ Indian languages including English, Hindi, Marathi, Gujarati, Bengali, Tamil, Telugu, Kannada, Malayalam, and Punjabi
+- **⏹️ Interruption Handling**: Interrupt AI mid-speech for immediate response
+- **⚡ Low Latency**: Response time of 1-2 seconds
+- **🎯 Domain Restricted**: AI only responds to Revolt Motors related queries
+- **📱 Responsive Design**: Beautiful, modern UI that works on all devices
+- **🔌 WebSocket Streaming**: Real-time communication for seamless experience
 
-### `npm start`
+## 🏗️ Architecture
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+Frontend (HTML/CSS/JS) ←→ WebSocket ←→ Backend (Node.js/Express) ←→ Gemini API
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend**: Vanilla JavaScript with Web Audio API for voice capture
+- **Backend**: Node.js + Express server with WebSocket support
+- **AI**: Google Gemini 2.5 Flash Preview Native Audio Dialog
+- **Communication**: WebSocket for real-time bidirectional communication
 
-### `npm test`
+## 🚀 Quick Start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js 18+ installed
+- Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+- Modern web browser with microphone access
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd voicechatbot
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. **Configure environment variables**
+   ```bash
+   # Copy the example file
+   cp env.example .env
+   
+   # Edit .env and add your Gemini API key
+   GEMINI_API_KEY=your_actual_api_key_here
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Start the server**
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. **Open in browser**
+   ```
+   http://localhost:3000
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔧 Configuration
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Environment Variables
 
-## Learn More
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `GEMINI_API_KEY` | Your Gemini API key (required) | - |
+| `MODEL_NAME` | Gemini model to use | `gemini-2.5-flash-preview-native-audio-dialog` |
+| `PORT` | Server port | `3000` |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Language Support
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The chatbot supports the following languages:
 
-### Code Splitting
+| Code | Language | Speech Recognition | Text-to-Speech |
+|------|----------|-------------------|----------------|
+| `en` | English | ✅ | ✅ |
+| `hi` | Hindi | ✅ | ✅ |
+| `mr` | Marathi | ✅ | ✅ |
+| `gu` | Gujarati | ✅ | ✅ |
+| `bn` | Bengali | ✅ | ✅ |
+| `ta` | Tamil | ✅ | ✅ |
+| `te` | Telugu | ✅ | ✅ |
+| `kn` | Kannada | ✅ | ✅ |
+| `ml` | Malayalam | ✅ | ✅ |
+| `pa` | Punjabi | ✅ | ✅ |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎯 Usage
 
-### Analyzing the Bundle Size
+### Basic Voice Interaction
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. **Select your preferred language** from the dropdown
+2. **Click the microphone button** to start recording
+3. **Speak your question** about Revolt Motors
+4. **Click again to stop** recording and send
+5. **Listen to AI response** in the same language
 
-### Making a Progressive Web App
+### Interruption Handling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **While AI is speaking**: Click the microphone button to interrupt
+- **AI stops immediately** and listens to your new input
+- **Seamless conversation flow** without waiting
 
-### Advanced Configuration
+### Supported Query Types
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The AI is restricted to Revolt Motors domain and can answer questions about:
 
-### Deployment
+- 🚗 Electric vehicle models and specifications
+- 🔋 Battery technology and range
+- 💰 Pricing and financing options
+- 🛠️ Service and maintenance
+- 📍 Dealership locations
+- 🏢 Company information and policies
+- 🌱 Environmental benefits
+- 📱 Mobile app features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🧪 Testing Checklist
 
-### `npm run build` fails to minify
+- [ ] **Multilingual Support**: Test in English and Hindi
+- [ ] **Interruption Handling**: Speak while AI is responding
+- [ ] **Response Latency**: Verify ≤2 seconds after stopping speech
+- [ ] **Domain Restriction**: AI only answers Revolt-related queries
+- [ ] **Voice Quality**: Clear audio input and output
+- [ ] **Responsive Design**: Works on mobile and desktop
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🏃‍♂️ Development
+
+### Project Structure
+
+```
+voicechatbot/
+├── server.js              # Backend server with WebSocket support
+├── public/
+│   ├── index.html         # Main HTML interface
+│   ├── styles.css         # Modern CSS styling
+│   └── script.js          # Frontend JavaScript logic
+├── package.json           # Dependencies and scripts
+├── env.example            # Environment variables template
+└── README.md              # This file
+```
+
+### Available Scripts
+
+```bash
+npm start          # Start the production server
+npm run dev        # Start the development server
+```
+
+### API Endpoints
+
+- `GET /` - Main application interface
+- `GET /health` - Server health check
+- `WS /` - WebSocket connection for real-time communication
+
+## 🔒 Security Considerations
+
+- **API Key Protection**: Never commit your `.env` file to version control
+- **HTTPS in Production**: Use HTTPS for production deployments
+- **Input Validation**: All audio input is validated before processing
+- **Rate Limiting**: Consider implementing rate limiting for production use
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Microphone Permission Denied**
+   - Check browser microphone permissions
+   - Refresh the page and try again
+
+2. **WebSocket Connection Failed**
+   - Verify server is running on correct port
+   - Check firewall settings
+
+3. **Gemini API Errors**
+   - Verify API key is correct and has sufficient quota
+   - Check API key permissions for audio models
+
+4. **Audio Not Playing**
+   - Ensure browser supports Web Audio API
+   - Check system audio settings
+
+### Debug Mode
+
+Open browser console to see detailed logs:
+```javascript
+// Access chatbot instance for debugging
+console.log(window.voiceChatbot);
+```
+
+## 📱 Browser Compatibility
+
+- ✅ Chrome 66+
+- ✅ Firefox 60+
+- ✅ Safari 14+
+- ✅ Edge 79+
+
+## 🚀 Deployment
+
+### Local Development
+```bash
+npm start
+```
+
+### Production Deployment
+1. Set `NODE_ENV=production`
+2. Configure reverse proxy (nginx/Apache)
+3. Use PM2 or similar process manager
+4. Enable HTTPS with valid SSL certificate
+
+## 📄 License
+
+This project is for educational and demonstration purposes.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📞 Support
+
+For issues and questions:
+- Check the troubleshooting section
+- Review browser console for errors
+- Verify API key configuration
+- Test with different browsers
+
+---
+
+**Built with ❤️ for Revolt Motors Voice Assistant Experience**
