@@ -144,15 +144,3 @@ Use `demo.md` for:
 3. **Customize branding** for your needs
 4. **Deploy to production** when ready
 
-## 📞 Need Help?
-
-- Check the troubleshooting section in README.md
-- Review browser console for errors
-- Verify all environment variables are set
-- Test with different browsers
-
----
-
-**🎉 Your Revolt Motors Voice Chatbot is ready to use!**
-
-Start the server, open your browser, and experience the future of voice interaction! 🚗✨
